@@ -1,13 +1,14 @@
 package br.com.restful;
 
 import br.com.restful.control.entity.Users;
+import br.com.restful.singleton.EntityManegerSingleton;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
 public class Main {
     public static void main(String[] args) {
-        final EntityManager em = Persistence.createEntityManagerFactory("restful").createEntityManager();
+        final EntityManager em = EntityManegerSingleton.getInstance();
 
         try {
             // add user to database
