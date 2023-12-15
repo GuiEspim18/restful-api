@@ -8,20 +8,24 @@ import javax.persistence.Persistence;
 
 public class Main {
     public static void main(String[] args) {
-        final EntityManager em = EntityManegerSingleton.getInstance();
+        final EntityManager em = EntityManegerSingleton.getInstance(""); // your db password here
 
         try {
             // add user to database
             final Users users = new Users();
-            users.setName("Guilherme Monteiro Espim");
-            users.setEmail("guilherme.monteiro.espim@gmail.com");
-            users.setPassword("guilherme123");
+            users.setName("Heloisa Santos Nascimento");
+            users.setEmail("santosnascimentoheloisa@gmail.com");
+            users.setPassword("helosn08");
 
             em.getTransaction().begin();
             em.persist(users);
             em.getTransaction().commit();
         } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
             e.printStackTrace();
+            System.out.println("Unsuccessful register!");
         } finally {
             em.close();
         }
