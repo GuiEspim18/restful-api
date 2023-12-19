@@ -10,10 +10,8 @@ public class EntityManegerSingleton {
 
     public static EntityManagerFactory factory;
 
-    public static EntityManager getInstance(String pass) {
-        Map<String, String> result = new HashMap<String, String>();
-        result.put("javax.persistence.jdbc.password", pass);
-        factory = Persistence.createEntityManagerFactory("restful", result);
+    public static EntityManager getInstance() {
+        factory = Persistence.createEntityManagerFactory("restful");
         final EntityManager em = factory.createEntityManager();
         return em;
     }

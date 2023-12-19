@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 
 public class Main {
     public static void main(String[] args) {
-        final EntityManager em = EntityManegerSingleton.getInstance(""); // your db password here
+        final EntityManager em = EntityManegerSingleton.getInstance(); // your db password here
 
         try {
             // add user to database
